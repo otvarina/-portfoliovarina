@@ -13,6 +13,7 @@
   --header-h: 64px;
   --sidebar-w: 96px;
   --door-duration: 1s;
+  --floor-indent: 390px;
 }
 
 * {
@@ -98,7 +99,7 @@ a {
   align-items: center;
   justify-content: center;
   gap: 14px;
-  padding: 40px 48px 24px var(--floor-indent);
+  padding: 24px 0;
   flex-shrink: 0;
 }
 
@@ -178,7 +179,7 @@ a {
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 40px 48px 24px;
+  padding: 40px 48px 24px var(--floor-indent);
   overflow: hidden;
 }
 
@@ -193,7 +194,7 @@ a {
 .floor__hero {
   font-size: var(--font-hero);
   line-height: 1;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.01em;
   margin: 0 0 24px;
   white-space: nowrap;
@@ -225,7 +226,6 @@ a {
   overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
-  padding-bottom: 8px;
   scrollbar-width: none;
 }
 
