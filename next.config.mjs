@@ -1,13 +1,4 @@
 /** @type {import('next').NextConfig} */
-const repoName = "-portfoliovarina";
-
-const nextConfig = {
-  output: "export",
-  basePath: `/${repoName}`,
-  assetPrefix: `/${repoName}/`,
-  images: {
-    unoptimized: true,
-  },
-};
+const nextConfig = {};
 
 export default nextConfig;
