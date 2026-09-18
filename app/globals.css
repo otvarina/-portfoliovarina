@@ -12,7 +12,7 @@
 
   --header-h: 64px;
   --sidebar-w: 96px;
-  --door-duration: 0.5s;
+  --door-duration: 1s;
 }
 
 * {
@@ -98,7 +98,7 @@ a {
   align-items: center;
   justify-content: center;
   gap: 14px;
-  padding: 24px 0;
+  padding: 40px 48px 24px var(--floor-indent);
   flex-shrink: 0;
 }
 
