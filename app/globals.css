@@ -1,0 +1,366 @@
+:root {
+  --color-bg: #d3d3d3;
+  --color-accent: #ffa228;
+  --color-dark: #0e0e0e;
+  --line-w: 1px;
+
+  --font-header: 10px;
+  --font-button: 10px;
+  --font-floor-label: 15px;
+  --font-body: 15px;
+  --font-hero: 134px;
+
+  --header-h: 64px;
+  --sidebar-w: 96px;
+  --door-duration: 0.5s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-dark);
+  font-family: var(--font-inter), Arial, sans-serif;
+  overflow: hidden;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+.app-shell {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Header ---------- */
+.header {
+  height: var(--header-h);
+  min-height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  border-bottom: var(--line-w) solid var(--color-accent);
+  font-size: var(--font-header);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.header__right {
+  color: #7a7a7a;
+  font-weight: 700;
+}
+
+/* ---------- Main row ---------- */
+.main-row {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.content-area {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+.divider-line {
+  width: var(--line-w);
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* ---------- Sidebar (floor buttons) ---------- */
+.sidebar {
+  width: var(--sidebar-w);
+  min-width: var(--sidebar-w);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 0;
+  flex-shrink: 0;
+}
+
+.floor-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: var(--line-w) solid var(--color-accent);
+  background: transparent;
+  color: var(--color-dark);
+  font-size: var(--font-button);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.floor-btn:hover:not(:disabled) {
+  background: rgba(255, 162, 40, 0.15);
+}
+
+.floor-btn--active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-dark);
+}
+
+.floor-btn--disabled,
+.floor-btn:disabled {
+  border-color: #9a9a9a;
+  color: #9a9a9a;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ---------- Elevator doors ---------- */
+.doors {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: var(--color-bg);
+  transition: transform var(--door-duration) cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.door--left {
+  left: 0;
+  border-right: var(--line-w) solid var(--color-accent);
+  transform: translateX(0%);
+}
+
+.door--right {
+  right: 0;
+  border-left: var(--line-w) solid var(--color-accent);
+  transform: translateX(0%);
+}
+
+.doors--open .door--left {
+  transform: translateX(-100%);
+}
+
+.doors--open .door--right {
+  transform: translateX(100%);
+}
+
+/* ---------- Floor content ---------- */
+.floor {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 48px 24px;
+  overflow: hidden;
+}
+
+.floor__label {
+  font-size: var(--font-floor-label);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #8a8a8a;
+  margin-bottom: 12px;
+}
+
+.floor__hero {
+  font-size: var(--font-hero);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 24px;
+  white-space: nowrap;
+}
+
+.floor__intro {
+  font-size: var(--font-body);
+  line-height: 1.5;
+  margin: 0 0 28px;
+  max-width: 520px;
+}
+
+.floor__intro p {
+  margin: 0;
+}
+
+/* ---------- Horizontal scroll row ---------- */
+.scroll-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+}
+
+.scroll-row {
+  display: flex;
+  gap: 56px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+
+.scroll-row::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-col {
+  flex: 0 0 auto;
+  width: 300px;
+}
+
+.scroll-col h3 {
+  font-size: var(--font-body);
+  font-weight: 700;
+  margin: 0 0 16px;
+  white-space: nowrap;
+}
+
+.scroll-col__block {
+  font-size: var(--font-body);
+  line-height: 1.55;
+  margin: 0 0 18px;
+}
+
+.scroll-col__block p {
+  margin: 0;
+}
+
+.scroll-col__block u {
+  text-decoration: underline;
+}
+
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: var(--line-w) solid var(--color-accent);
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--color-dark);
+  z-index: 5;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.scroll-arrow:hover {
+  background: rgba(255, 162, 40, 0.2);
+}
+
+.scroll-arrow:disabled {
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.scroll-arrow--left {
+  left: 0;
+}
+
+.scroll-arrow--right {
+  right: 0;
+}
+
+/* ---------- Soon placeholder ---------- */
+.soon {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: #7a7a7a;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1200px) {
+  :root {
+    --font-hero: 96px;
+    --sidebar-w: 84px;
+  }
+  .scroll-col {
+    width: 260px;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --font-hero: 64px;
+    --sidebar-w: 72px;
+  }
+  .floor {
+    padding: 28px 24px 20px;
+  }
+  .scroll-row {
+    gap: 40px;
+  }
+  .scroll-col {
+    width: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    overflow: auto;
+  }
+  :root {
+    --header-h: 56px;
+    --font-hero: 44px;
+  }
+  .header {
+    padding: 0 16px;
+  }
+  .main-row {
+    flex-direction: column;
+  }
+  .divider-line {
+    width: 100%;
+    height: var(--line-w);
+  }
+  .sidebar {
+    flex-direction: row;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    padding: 12px 0;
+    gap: 10px;
+  }
+  .floor {
+    padding: 24px 16px;
+  }
+  .scroll-col {
+    width: 200px;
+  }
+}
