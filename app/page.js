@@ -7,7 +7,7 @@ import ElevatorDoors from "./components/ElevatorDoors";
 import FloorG from "./components/FloorG";
 import FloorSoon from "./components/FloorSoon";
 
-const DOOR_MS = 500; // должно совпадать с --door-duration в globals.css
+const DOOR_MS = 1000; // должно совпадать с --door-duration в globals.css
 const DEFAULT_FLOOR = "G"; // единственный этаж с готовым дизайном
 
 // Состояния лифта:
